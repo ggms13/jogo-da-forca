@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <title>Jogo da Forca</title>
+        <!--CSS-->
+        <link rel="stylesheet" href="reset.css">
+        <link rel="stylesheet" href="style.css">
+        <!--Google Fonts-->
+        <link href="https://fonts.googleapis.com/css2?family=Inter&display=swap" rel="stylesheet">
+        <!--FavIcon-->
+        <link rel="icon" type="image/x-icon" href="./imagens/carrasco.png">
+    </head>
+    <body>
+        <header>
+            <img src="./imagens/logo.png" alt="logo alura" class="logo">
+        </header>
+
+        <!--TELA INICIAL -->
+            <div class="tela-inicial" id="tela-inicio">
+                <button id="inicia-jogo" class="inicia-jogo-btn">Começar a jogar</button>
+                <button id="adiciona-palavra" class="add-palavra-btn">Adicionar nova palavra</button>
+            </div>
+
+        <!--ADICIONANDO NOVA PALAVRA -->
+        <section class="input-section hide" id="secao-input">
+            <input type="text" id="add-palavra" class="input-add-palavra" placeholder="Digite uma palavra">
+
+            <div class="aviso">
+                <img class="aviso-img" src="./imagens/atencao.png" alt="ponto de exclamação dentro de um círculo">
+                <p class="aviso-p">Máx. de 8 letras</p>
+            </div>
+
+            <div class="botoes">
+                <button id="salva-continua" class="botoes-esquerda">Salvar e começar</button>
+                <button id="cancela-btn" class="botoes-direita">Cancelar</button>
+            </div>
+        </section> 
+
+
+        <!--JOGO-->
+             
+    <main  class="main-jogo hide" id="main-id">
+        <!--CANVAS -->
+        <canvas width="1200" height="480" id="forca">
+
+        </canvas>
+            
+        </div>
+
+        <div class="mensagem">
+            <h2 class="h2-msg" id="h2-msg-id"></h2>
+        </div>
+        <div class="botoes-main">
+            <button id="novo-jogo-btn" class="botoes-esquerda">Novo Jogo</button>
+            <button id="desistir-btn" class="botoes-direita">Desistir</button>
+        </div>
+    </main>
+
+
+
+
+   <!-- <footer>
+        <p class="creditos">Créditos do Favicon:</p>
+        <a href="https://www.flaticon.com/br/icones-gratis/carrasco" title="carrasco ícones">Carrasco ícones criados por Dreamstale - Flaticon</a>
+    </footer>-->
+        <script src="script.js"></script>
+        <script src="canvas.js"></script>
+
+    </body>
+
+</html>
