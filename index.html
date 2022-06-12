@@ -4,12 +4,17 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        
         <title>Jogo da Forca</title>
+       
         <!--CSS-->
         <link rel="stylesheet" href="reset.css">
         <link rel="stylesheet" href="style.css">
+       
         <!--Google Fonts-->
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
         <link href="https://fonts.googleapis.com/css2?family=Inter&display=swap" rel="stylesheet">
+       
         <!--FavIcon-->
         <link rel="icon" type="image/x-icon" href="./imagens/carrasco.png">
     </head>
@@ -34,8 +39,10 @@
             </div>
 
             <div class="botoes">
-                <button id="salva-continua" class="botoes-esquerda">Salvar e começar</button>
+                <button id="salvar-palavra" class="botoes-esquerda">Salvar palavra</button>
+                <button id="salva-e-inicia" class="btn-salva-inicia">Iniciar Jogo</button>
                 <button id="cancela-btn" class="botoes-direita">Cancelar</button>
+                
             </div>
         </section> 
 
@@ -46,13 +53,8 @@
         <!--CANVAS -->
         <canvas width="1200" height="480" id="forca">
 
-        </canvas>
-            
-        </div>
+        </canvas>      
 
-        <div class="mensagem">
-            <h2 class="h2-msg" id="h2-msg-id"></h2>
-        </div>
         <div class="botoes-main">
             <button id="novo-jogo-btn" class="botoes-esquerda">Novo Jogo</button>
             <button id="desistir-btn" class="botoes-direita">Desistir</button>
@@ -68,6 +70,7 @@
     </footer>-->
         <script src="script.js"></script>
         <script src="canvas.js"></script>
+        <script src="derrota-vitoria.js"></script>
 
     </body>
 
