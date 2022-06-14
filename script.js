@@ -31,8 +31,6 @@ var btnDesistir = document.getElementById("desistir-btn");
 iniciaJogoBtn.addEventListener("click", function(){
     limpaCanvas();
     letras = [];
-    var letrasPalavraSecreta = [];
-    var letrasCorretas = [];
     palavraCorreta = "";
     palavraSecreta = "";
 
@@ -51,6 +49,7 @@ iniciaJogoBtn.addEventListener("click", function(){
                      if(palavraSecreta[i] === letra) {
                          escreverLetraCorreta(i);
                          letrasCorretas.push(letra);
+                         verificaVitoria();
                      }
                  }
              }
@@ -63,6 +62,7 @@ iniciaJogoBtn.addEventListener("click", function(){
              }
          } 
     } 
+    
 
 });
 
@@ -81,6 +81,18 @@ btnSalvarPalavra.addEventListener("click", function() {
 });
 
 btnSalvaInicia.addEventListener("click", function() {
+    limpaCanvas();
+    letras = [];
+    letrasCorretas = [];
+    palavraCorreta = "";
+    palavraSecreta = "";
+
+    erros = 6;
+    escreverTracinhos(escolherPalavraSecreta());
+    secaoInput.classList.add("hide");
+    secaoJogo.classList.remove("hide");
+    paginaAtual = secaoJogo;
+
     document.onkeydown = (e) => {
         var letra = e.key.toUpperCase();
          if(!verificarLetraCorreta(e.key)) {
@@ -90,7 +102,7 @@ btnSalvaInicia.addEventListener("click", function() {
                      if(palavraSecreta[i] === letra) {
                          escreverLetraCorreta(i);
                          letrasCorretas.push(letra);
-                         
+                         verificaVitoria();
                      }
                  }
              }
@@ -103,25 +115,13 @@ btnSalvaInicia.addEventListener("click", function() {
              }
          } 
     } 
-    limpaCanvas();
-    letras = [];
-    var letrasPalavraSecreta = [];
-    var letrasCorretas = [];
-    palavraCorreta = "";
-    palavraSecreta = "";
-    erros = 6;
-    escreverTracinhos(escolherPalavraSecreta());
-    secaoJogo.classList.remove("hide");
-    secaoInput.classList.add("hide");
-    paginaAtual = secaoJogo;
-     
-})
+    
+});
 
 btnNovoJogo.addEventListener("click", function() {
     limpaCanvas();
     letras = [];
-    var letrasPalavraSecreta = [];
-    var letrasCorretas = [];
+    letrasCorretas = [];
     palavraCorreta = "";
     palavraSecreta = "";
 
@@ -140,6 +140,7 @@ btnNovoJogo.addEventListener("click", function() {
                      if(palavraSecreta[i] === letra) {
                          escreverLetraCorreta(i);
                          letrasCorretas.push(letra);
+                         verificaVitoria();
                      }
                  }
              }
@@ -230,11 +231,9 @@ document.onkeydown = (e) => {
              adicionarLetraCorreta(palavraSecreta.indexOf(letra))
              for(let i = 0; i < palavraSecreta.length; i++) {
                  if(palavraSecreta[i] === letra) {
-                     escreverLetraCorreta(i);
-                     letrasCorretas.push(letra);
-                     
-                     
+                     escreverLetraCorreta(i);     
                  }
+                 letrasCorretas.push(letra);
              }
              
          }
