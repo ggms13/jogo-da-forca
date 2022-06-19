@@ -2,43 +2,45 @@
 var tabuleiro = document.getElementById('forca').getContext('2d');
 var tela = document.querySelector('canvas');
 var pincel = tela.getContext('2d');
+
 //DESENHANDO O BONECO
+
 function desenhaEnforcado(erros) {
-    if (erros === 5) {
-      desenhaCabeca();
-      erros -=1;
-      return erros
-    } else if (erros === 4) {
-      //CORPO
-      desenhaLinha(200, 170, 200, 250);
-      erros--
-      return erros
-    } else if (erros === 3) {
-      //BRAÇO ESQ
-      desenhaLinha(200, 175, 170, 220);
-      erros--
-      return erros
-    } else if (erros === 2) {
-      //BRAÇO DIR
-      desenhaLinha(200, 175, 230, 220);
-      erros--
-      return erros
-    } else if (erros === 1) {
-      //PERNA ESQ
-      desenhaLinha(200, 249, 170, 320);    
-      erros--
-      return erros
-  } else if (erros === 0) {
-      //PERNA DIR
-      desenhaLinha(200, 249, 230, 320);
-      erros--
-      derrota();
-      document.onkeydown = (e) => {
-        e.stopPropagation();
-      }
+  if (erros == 5) {
+    desenhaCabeca();
+    erros -=1;
+    return;
+  } else if (erros == 4) {
+    //CORPO
+    desenhaLinha(200, 170, 200, 250);
+    erros -=1;
+    return;
+  } else if (erros == 3) {
+    //BRAÇO ESQ
+    desenhaLinha(200, 175, 170, 220);
+    erros -=1;
+    return;
+  } else if (erros == 2) {
+    //BRAÇO DIR
+    desenhaLinha(200, 175, 230, 220);
+    erros -=1;
+    return;
+  } else if (erros == 1) {
+    //PERNA ESQ
+    desenhaLinha(200, 249, 170, 320);    
+    erros -=1;
+    return;
+} else if (erros == 0) {
+    //PERNA DIR
+    desenhaLinha(200, 249, 230, 320);
+    erros -=1;
+    derrota();
+    document.onkeydown = (e) => {
+      e.stopPropagation();
     }
-  return erros;
-      
+  }
+return;
+    
 }
 
   //FORCA
@@ -64,7 +66,7 @@ function desenhaLinha(xa, ya, xb, yb) {
     pincel.lineTo(xb, yb);
     pincel.lineWidth = 5;
     pincel.strokeStyle = "#0A3871";
-    pincel.stroke()
+    pincel.stroke();
     
  }
  
