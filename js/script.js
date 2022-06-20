@@ -33,11 +33,11 @@ var btnDesistir = document.getElementById("desistir-btn");
 // FUNÇÃO PARA VERIFICAR SE A PALAVRA DO INPUT É VÁLIDA
 function verificaPalavraDoInput() {
     valorPalavra = (inputAddPalavra.value).toUpperCase();
-        if ((valorPalavra.length < 4) || (valorPalavra.length > 8)){
-            alert("Digite o nome de um país válido e de até 8 letras");
+        if (valorPalavra.length < 4){
+            alert("Digite o nome de um PAÍS válido!");
             inputAddPalavra.value = "";
             inputAddPalavra.focus();
-            
+
         }
         else if (palavras.includes(valorPalavra)) {
             alert("Esse país já está na lista, tente outro!")
@@ -48,7 +48,7 @@ function verificaPalavraDoInput() {
             palavras.push(valorPalavra);
             alert("Palavra adicionada com sucesso!");
             inputAddPalavra.value = "";
-            console.log(palavras);  
+            console.log(palavras);
         }
 }
 
@@ -59,15 +59,15 @@ function escolherPalavraSecreta(){
     palavraSecreta = palavra;
     console.log(palavra);
     return palavra;
-} 
+}
 
 function verificarLetraCorreta(key) {
     if(letras.length < 1 || letras.indexOf(key) < 0) {
         console.log(key);
         letras.push(key);
         return false;
-    
-} 
+
+}
 else {
     letras.push(key.toUpperCase());
     return true;
@@ -77,58 +77,41 @@ else {
 
 function adicionarLetraCorreta(i) {
     palavraCorreta += palavraSecreta[i].toUpperCase();
-    
+
 }
 
 function adicionarLetraIncorreta(letter) {
     if(palavraSecreta.indexOf(letter) <= 0) {
-        erros -= 1;   
+        erros -= 1;
     }
 }
 
-// CAPTURA DO TECLAD
+// CAPTURA DO TECLADO
+document.addEventListener("keydown", escutaTeclado = (e) => {
+  var letra = e.key.toUpperCase();
+  var codigo = e.keyCode;
 
-document.onkeydown = (e) => {
-    var letra = e.key.toUpperCase();
-     if(!verificarLetraCorreta(e.key)) {
-         if(palavraSecreta.includes(letra)) {
-             adicionarLetraCorreta(palavraSecreta.indexOf(letra))
+  if((somenteLetras(codigo)) && (!verificarLetraCorreta(e.key))) {
+    if(palavraSecreta.includes(letra)){
+      adicionarLetraCorreta(palavraSecreta.indexOf(letra))
              for(let i = 0; i < palavraSecreta.length; i++) {
-                 if(paavraSecreta[i] === letra) {
-                     escreverLetraCorreta(i);     
+                 if(palavraSecreta[i] === letra) {
+                     escreverLetraCorreta(i);
+                     letrasCorretas.push(letra);
+                     verificaVitoria();
                  }
-                 letrasCorretas.push(letra);
+
              }
-             
-         }
-         else {
-             if(!verificarLetraCorreta(e.key))
-             return
+    }
+    else if (!(palavraSecreta.includes(letra))){
              adicionarLetraIncorreta(letra);
              escreverLetraIncorreta(letra, erros);
-             desenhaEnforcado(erros); 
-         }
-     } 
-}
-
-
-//VERIFICANDO SE A TECLA É UMA LETRA
-
-function somenteLetra(codigo) {
-    return codigo >= 65 && codigo >= 90;
-}
-
-// VERIFICANDO A VITÓRIA
-function verificaVitoria() {
-    if(letrasCorretas.length == letrasPalavraSecreta.length){
-        vitoria();
-        console.log(letrasCorretas.length);
-        console.log(letrasPalavraSecreta.length);
-        document.onkeydown = (e) => {
-            e.stopPropagation();
-          }
+             desenhaEnforcado(erros);
     }
-}
+  }
+});
+
+
 
 // RECARREGANDO A PÁGINA INICIAL
 function retornaPaginaInicial() {
@@ -149,27 +132,17 @@ function iniciaJogo() {
     footer.classList.add("hide");
     secaoJogo.classList.remove("hide");
     paginaAtual = secaoJogo;
+}
 
-    document.onkeydown = (e) => {
-        var letra = e.key.toUpperCase();
-         if(!verificarLetraCorreta(e.key)) {
-             if(palavraSecreta.includes(letra)) {
-                 adicionarLetraCorreta(palavraSecreta.indexOf(letra));
-                 for(let i = 0; i < palavraSecreta.length; i++) {
-                     if(palavraSecreta[i] === letra) {
-                         escreverLetraCorreta(i);
-                         letrasCorretas.push(letra);
-                         verificaVitoria();
-                     }
-                 }
-             }
-             else {
-                 if(!verificarLetraCorreta(e.key))
-                 return
-                 adicionarLetraIncorreta(letra);
-                 escreverLetraIncorreta(letra, erros);  
-                 desenhaEnforcado(erros);  
-             }
-         } 
-    } 
+function somenteLetras(codigo) {
+  return codigo >= 65 && codigo <= 90;
+}
+
+function verificaVitoria() {
+    if(letrasCorretas.length == letrasPalavraSecreta.length){
+        vitoria();
+        console.log(letrasCorretas.length);
+        console.log(letrasPalavraSecreta.length);
+        document.removeEventListener("keydown", escutaTeclado);
+    }
 }

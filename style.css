@@ -142,7 +142,7 @@ body {
 .aviso {
     display: flex;
     padding: 10px;
-    margin: 15px 690px 15px 0;
+    margin: 15px 600px 15px 0;
 }
 
 .aviso-p {
@@ -207,3 +207,9 @@ footer> a, i:hover {
     transition: 700ms;
 }
 
+.dica {
+    text-align: center;
+    color: #FFFFFF;
+    font-size: 27px;
+    
+}

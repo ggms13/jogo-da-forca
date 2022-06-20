@@ -35,9 +35,7 @@ function desenhaEnforcado(erros) {
     desenhaLinha(200, 249, 230, 320);
     erros -=1;
     derrota();
-    document.onkeydown = (e) => {
-      e.stopPropagation();
-    }
+    document.removeEventListener("keydown", escutaTeclado);
   }
 return;
     

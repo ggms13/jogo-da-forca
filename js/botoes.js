@@ -5,12 +5,36 @@ btnCancelar.addEventListener("click", function() {
 
 // BOTÃO NOVO JOGO
 btnNovoJogo.addEventListener("click", function() {
-    iniciaJogo(); 
+    iniciaJogo();
+
+    document.addEventListener("keydown", escutaTeclado = (e) => {
+      var letra = e.key.toUpperCase();
+      var codigo = e.keyCode;
+
+      if((somenteLetras(codigo)) && (!verificarLetraCorreta(e.key))) {
+        if(palavraSecreta.includes(letra)){
+          adicionarLetraCorreta(palavraSecreta.indexOf(letra))
+                 for(let i = 0; i < palavraSecreta.length; i++) {
+                     if(palavraSecreta[i] === letra) {
+                         escreverLetraCorreta(i);
+                         letrasCorretas.push(letra);
+                         verificaVitoria();
+                     }
+
+                 }
+        }
+        else if (!(palavraSecreta.includes(letra))){
+                 adicionarLetraIncorreta(letra);
+                 escreverLetraIncorreta(letra, erros);
+                 desenhaEnforcado(erros);
+        }
+      }
+    });
 });
 
 // BOTÃO DESISTIR
 btnDesistir.addEventListener("click", function() {
-    retornaPaginaInicial(); 
+    retornaPaginaInicial();
 });
 
 // INICIANDO JOGO NA PAGINA INICIAL
@@ -47,27 +71,27 @@ btnSalvaInicia.addEventListener("click", function() {
     secaoJogo.classList.remove("hide");
     paginaAtual = secaoJogo;
 
-    document.onkeydown = (e) => {
+    document.addEventListener("keydown", escutaTeclado = (e) => {
         var letra = e.key.toUpperCase();
-         if(!verificarLetraCorreta(e.key)) {
-             if(palavraSecreta.includes(letra)) {
-                 adicionarLetraCorreta(palavraSecreta.indexOf(letra));
-                 for(let i = 0; i < palavraSecreta.length; i++) {
-                     if(palavraSecreta[i] === letra) {
-                         escreverLetraCorreta(i);
-                         letrasCorretas.push(letra);
-                         verificaVitoria();
-                     }
-                 }
-             }
-             else {
-                 if(!verificarLetraCorreta(e.key))
-                 return
-                 adicionarLetraIncorreta(letra);
-                 escreverLetraIncorreta(letra, erros);  
-                 desenhaEnforcado(erros);  
-             }
-         } 
-    } 
-    
+        var codigo = e.keyCode;
+      
+        if((somenteLetras(codigo)) && (!verificarLetraCorreta(e.key))) {
+          if(palavraSecreta.includes(letra)){
+            adicionarLetraCorreta(palavraSecreta.indexOf(letra))
+                   for(let i = 0; i < palavraSecreta.length; i++) {
+                       if(palavraSecreta[i] === letra) {
+                           escreverLetraCorreta(i);
+                           letrasCorretas.push(letra);
+                           verificaVitoria();
+                       }
+      
+                   }
+          }
+          else if (!(palavraSecreta.includes(letra))){
+                   adicionarLetraIncorreta(letra);
+                   escreverLetraIncorreta(letra, erros);
+                   desenhaEnforcado(erros);
+          }
+        }
+      });
 });
