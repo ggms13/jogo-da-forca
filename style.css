@@ -142,7 +142,7 @@ body {
 .aviso {
     display: flex;
     padding: 10px;
-    margin: 15px 600px 15px 0;
+    margin: 1rem 31rem 1rem 0;
 }
 
 .aviso-p {
@@ -217,62 +217,4 @@ footer> a, i:hover {
 
 
 
-/* MEDIA QUERIES */
 
-@media screen and (max-width: 480px) {
-    body {
-        height: 100vh;
-    }
-
-  /* SEÇÃO INPUT */
-
-  .input-section {
-    margin: 30% 0 0 0;
-  }
-
-  .input-add-palavra {
-    margin: auto;
-    width: 100%;
-    
-  }
-
-  .input-add-palavra::placeholder {
-    font-size: 2.2rem;
-    text-align: center;
-  }
-
-  .aviso {
-    margin: 3.5% auto;
-    padding: 2%;
-  }
-
-  .aviso-img {
-    width: 5%;
-    height: 5%;
-  }
-
-  .botoes {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    width: 100%;
-    padding: 2%;
-  }
-
-  .botoes-direita, .botoes-esquerda, .btn-salva-inicia {
-    width: 60%;
-    margin: 2%;
-    font-size: 1.1rem;
-  }
-
-
-
-
-
-
-
-
-
-
-
-}

@@ -33,8 +33,8 @@ var btnDesistir = document.getElementById("desistir-btn");
 // FUNÇÃO PARA VERIFICAR SE A PALAVRA DO INPUT É VÁLIDA
 function verificaPalavraDoInput() {
     valorPalavra = (inputAddPalavra.value).toUpperCase();
-        if (valorPalavra.length < 4){
-            alert("Digite o nome de um PAÍS válido!");
+        if ((valorPalavra.length < 4) || (valorPalavra.length > 8)){
+            alert("Digite o nome de um PAÍS válido e com até 8 letras!");
             inputAddPalavra.value = "";
             inputAddPalavra.focus();
 
